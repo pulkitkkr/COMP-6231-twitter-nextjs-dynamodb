@@ -1,0 +1,51 @@
+@import 'pre-customizations';
+@import 'colors';
+
+* {
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  margin: 0;
+}
+
+input,
+textarea,
+keygen,
+select,
+button {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: $font-size-base;
+}
+
+label {
+  cursor: pointer;
+  font-weight: $font-weight-base !important;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 0;
+}
+
+select {
+  option[default][disabled] {
+    color: $tone;
+  }
+
+  option {
+    color: #000;
+  }
+}
+
+figure {
+  margin: 0;
+}
