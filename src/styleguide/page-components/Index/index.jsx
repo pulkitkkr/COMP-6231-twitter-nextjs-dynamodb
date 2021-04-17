@@ -48,10 +48,10 @@ const Dashboard = () => {
         userLabel={``}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar handleDrawerToggle={() => {}} routes={[]} />
+        <Navbar handleDrawerToggle={() => {}} routes={routes} />
       </div>
       <div className={classes.content}>
-        <div className={classes.container}>Showing Page COntent Here</div>
+        <div className={classes.container}>Showing skjsdkjsdkj COntent Here</div>
       </div>
     </div>
   );

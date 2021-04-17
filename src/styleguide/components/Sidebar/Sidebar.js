@@ -24,8 +24,8 @@ const useStyles = makeStyles(styles);
 export default function Sidebar(props) {
   const router = useRouter();
   const classes = useStyles();
-  // verifies if routeName is the one active (in browser input)
-  function activeRoute(routeName) {
+
+  function isActiveRoute(routeName) {
     return router.pathname === routeName;
   }
 
@@ -38,35 +38,23 @@ export default function Sidebar(props) {
         var listItemClasses;
 
         listItemClasses = classNames({
-          [' ' + classes[color]]: activeRoute(prop.layout + prop.path),
+          [' ' + classes[color]]: isActiveRoute(prop.path),
         });
 
         const whiteFontClasses = classNames({
-          [' ' + classes.whiteFont]: activeRoute(prop.layout + prop.path),
+          [' ' + classes.whiteFont]: isActiveRoute(prop.path),
         });
 
         const Label = (
           <ListItem button className={classes.itemLink + listItemClasses}>
             {typeof prop.icon === 'string' ? (
-              <Icon
-                className={classNames(classes.itemIcon, whiteFontClasses, {
-                  [classes.itemIconRTL]: props.rtlActive,
-                })}
-              >
-                {prop.icon}
-              </Icon>
+              <Icon className={classNames(classes.itemIcon, whiteFontClasses)}>{prop.icon}</Icon>
             ) : (
-              <prop.icon
-                className={classNames(classes.itemIcon, whiteFontClasses, {
-                  [classes.itemIconRTL]: props.rtlActive,
-                })}
-              />
+              <prop.icon className={classNames(classes.itemIcon, whiteFontClasses)} />
             )}
             <ListItemText
-              primary={props.rtlActive ? prop.rtlName : prop.name}
-              className={classNames(classes.itemText, whiteFontClasses, {
-                [classes.itemTextRTL]: props.rtlActive,
-              })}
+              primary={prop.name}
+              className={classNames(classes.itemText, whiteFontClasses)}
               disableTypography={true}
             />
           </ListItem>
@@ -89,11 +77,7 @@ export default function Sidebar(props) {
                 }}
                 label={
                   <div>
-                    <prop.icon
-                      className={classNames(classes.itemIcon, whiteFontClasses, {
-                        [classes.itemIconRTL]: props.rtlActive,
-                      })}
-                    />
+                    <prop.icon className={classNames(classes.itemIcon, whiteFontClasses)} />
                     {prop.name}
                   </div>
                 }
@@ -101,30 +85,28 @@ export default function Sidebar(props) {
                 {prop.actionRoutes
                   .filter((item) => !item.isHidden)
                   .map((item, key) => (
-                    <Link href={prop.path + item.path} className={classes.item} activeClassName="active">
-                      <TreeItem
-                        nodeId={`${item.name}-${key}`}
-                        classes={{
-                          root: classes.treeItemRoot,
-                          content: classes.content,
-                          expanded: classes.expanded,
-                          selected: classes.selected,
-                          group: classes.group,
-                          label: activeRoute(prop.layout + prop.path + item.path)
-                            ? classes.treeItemLabelSelected
-                            : classes.treeItemLabel,
-                        }}
-                        label={
-                          <>
-                            <item.icon
-                              className={classNames(classes.itemIcon, whiteFontClasses, {
-                                [classes.itemIconRTL]: props.rtlActive,
-                              })}
-                            />
-                            {item.name}
-                          </>
-                        }
-                      />
+                    <Link href={prop.path + item.path}>
+                      <a className={classNames(classes.item, { active: isActiveRoute(prop.path) })}>
+                        <TreeItem
+                          nodeId={`${item.name}-${key}`}
+                          classes={{
+                            root: classes.treeItemRoot,
+                            content: classes.content,
+                            expanded: classes.expanded,
+                            selected: classes.selected,
+                            group: classes.group,
+                            label: isActiveRoute(prop.path + item.path)
+                              ? classes.treeItemLabelSelected
+                              : classes.treeItemLabel,
+                          }}
+                          label={
+                            <>
+                              <item.icon className={classNames(classes.itemIcon, whiteFontClasses)} />
+                              {item.name}
+                            </>
+                          }
+                        />
+                      </a>
                     </Link>
                   ))}
               </TreeItem>
@@ -133,8 +115,10 @@ export default function Sidebar(props) {
         }
 
         return (
-          <Link href={prop.path} className={activePro + classes.item} activeClassName="active" key={key}>
-            {Label}
+          <Link href={prop.path} key={key}>
+            <a className={classNames(activePro + classes.item, { active: isActiveRoute(prop.path) })}>
+              {Label}
+            </a>
           </Link>
         );
       })}
@@ -170,13 +154,11 @@ export default function Sidebar(props) {
     <div>
       <Hidden smDown implementation="css">
         <Drawer
-          anchor={props.rtlActive ? 'right' : 'left'}
+          anchor={'left'}
           variant="permanent"
           open
           classes={{
-            paper: classNames(classes.drawerPaper, {
-              [classes.drawerPaperRTL]: props.rtlActive,
-            }),
+            paper: classNames(classes.drawerPaper),
           }}
         >
           {brand}
@@ -191,7 +173,6 @@ export default function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-  rtlActive: PropTypes.bool,
   bgColor: PropTypes.oneOf(['purple', 'blue', 'green', 'orange', 'red']),
   logo: PropTypes.string,
   image: PropTypes.string,
