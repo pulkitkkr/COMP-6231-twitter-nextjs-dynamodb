@@ -8,7 +8,7 @@ const handlePUT = async (req, res) => {
     return res.status(201).json(item);
   }
 
-  return res.status(400).json({ message: 'tweet_id is required' });
+  return res.status(500).json({ message: 'tweet_id is required' });
 };
 
 const handleGET = async (req, res) => {
@@ -17,6 +17,10 @@ const handleGET = async (req, res) => {
       tweet_id: parseInt(req.query.tweet_id),
     },
   });
+
+  if (!Item) {
+    return res.status(500).json({ message: `No Tweet found with tweet_id = ${req.query.tweet_id}` });
+  }
 
   return res.status(200).json(Item);
 };
