@@ -16,5 +16,13 @@ yarn install
 yarn run dev
 ```
 
+## Team Information
+- Team Number: 15
+
+### Members:
+- Pulkit Kakkar - pulkitkkr@gmail.com - 40160971
+- Bo Wang - 
+- Dinesh Kumar - 
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
