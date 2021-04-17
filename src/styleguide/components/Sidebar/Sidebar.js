@@ -144,9 +144,7 @@ export default function Sidebar(props) {
         </a>
       </Link>
 
-      <div>
-        <p className={classes.userName}>{userLabel}</p>
-      </div>
+      <p className={classes.userName}>{userLabel}</p>
     </div>
   );
 

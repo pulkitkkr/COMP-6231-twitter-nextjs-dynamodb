@@ -44,7 +44,7 @@ const Page = ({ children }) => {
         image={bgImage}
         logo={logo}
         color={'blue'}
-        userLabel={``}
+        userLabel={null}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar handleDrawerToggle={() => {}} routes={routes} />
