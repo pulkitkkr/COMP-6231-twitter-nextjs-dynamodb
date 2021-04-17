@@ -24,6 +24,13 @@ export default function Header(props) {
     let name;
 
     props.routes.forEach((prop) => {
+      if (prop.actionRoutes) {
+        prop.actionRoutes.forEach((actionRoute) => {
+          if (isActiveRoute(prop.path + actionRoute.path)) {
+            name = prop.name + ' - ' + actionRoute.name;
+          }
+        });
+      }
       if (isActiveRoute(prop.path)) {
         name = prop.name;
       }

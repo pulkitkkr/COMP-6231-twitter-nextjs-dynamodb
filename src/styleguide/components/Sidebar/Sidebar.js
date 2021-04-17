@@ -46,7 +46,7 @@ export default function Sidebar(props) {
         });
 
         const Label = (
-          <ListItem button className={classes.itemLink + listItemClasses}>
+          <ListItem key={key + prop.path} button className={classes.itemLink + listItemClasses}>
             {typeof prop.icon === 'string' ? (
               <Icon className={classNames(classes.itemIcon, whiteFontClasses)}>{prop.icon}</Icon>
             ) : (
@@ -85,7 +85,7 @@ export default function Sidebar(props) {
                 {prop.actionRoutes
                   .filter((item) => !item.isHidden)
                   .map((item, key) => (
-                    <Link href={prop.path + item.path}>
+                    <Link key={prop.path + item.path} href={prop.path + item.path}>
                       <a className={classNames(classes.item, { active: isActiveRoute(prop.path) })}>
                         <TreeItem
                           nodeId={`${item.name}-${key}`}

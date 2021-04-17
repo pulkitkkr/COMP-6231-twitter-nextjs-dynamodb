@@ -16,7 +16,7 @@ const dashboardRoutes = [
     layout: '/admin',
     actionRoutes: [
       {
-        path: '/add-edit',
+        path: '/add',
         name: 'Add/Edit',
         icon: AddIcon,
       },
