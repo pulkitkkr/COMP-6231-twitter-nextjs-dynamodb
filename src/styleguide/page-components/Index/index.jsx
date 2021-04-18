@@ -14,7 +14,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import dashboardStyles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js';
 import { getDateLabel } from 'lib/dates';
 import dummyData from 'lib/dummyCompanyResponse';
-
 import MenuItem from '@material-ui/core/MenuItem';
 import CustomSelect from 'components/CustomSelect/CustomSelect';
 import CountryChart from './CountryChart';
@@ -136,7 +135,6 @@ const Dashboard = () => {
 
   const { Items: companyItems, Count: companyItemsCount } = companyData || {};
 
-  console.log(companyItems);
   return (
     <Page>
       <GridContainer>
