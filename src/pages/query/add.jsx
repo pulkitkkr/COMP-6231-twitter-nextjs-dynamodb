@@ -1,8 +1,8 @@
 import React from 'react';
-import Dashboard from 'page-components/Index/index';
+import Add from 'page-components/Query/add';
 
 const Home = () => {
-  return <Dashboard />;
+  return <Add />;
 };
 
 export default Home;

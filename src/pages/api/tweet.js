@@ -74,6 +74,4 @@ export default async (req, res) => {
       res.status(404).json({ error: `${req.method} does not exist` });
       break;
   }
-
-  const item = { tweet_id: 123 };
 };

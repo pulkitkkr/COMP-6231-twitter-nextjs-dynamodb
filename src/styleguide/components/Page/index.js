@@ -48,9 +48,10 @@ const Page = ({ children }) => {
       />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar handleDrawerToggle={() => {}} routes={routes} />
-      </div>
-      <div className={classes.content}>
-        <div className={classes.container}>{children}</div>
+
+        <div className={classes.content}>
+          <div className={classes.container}>{children}</div>
+        </div>
       </div>
     </div>
   );

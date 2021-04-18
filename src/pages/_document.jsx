@@ -12,6 +12,7 @@ export default class extends Document {
     return (
       <Html lang="en" dir="ltr">
         <Head>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <meta name="application-name" content={APP_NAME} />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
