@@ -62,11 +62,17 @@ export default function Sidebar(props) {
 
         const isNestedLink = prop.actionRoutes && prop.actionRoutes.length > 0;
 
+        const isExpanded = router.pathname && router.pathname.includes(prop.path);
+
         if (isNestedLink) {
           return (
-            <TreeView key={key} defaultExpanded={['3']} className={classes.treeView}>
+            <TreeView
+              key={key}
+              defaultExpanded={isExpanded ? [`${prop.path}`] : []}
+              className={classes.treeView}
+            >
               <TreeItem
-                nodeId={`${prop.name}-${key}`}
+                nodeId={`${prop.path}`}
                 classes={{
                   root: classes.mainTreeItemRoot,
                   content: classes.content,

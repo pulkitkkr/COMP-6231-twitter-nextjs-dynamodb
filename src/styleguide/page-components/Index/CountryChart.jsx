@@ -15,8 +15,7 @@ const CountryChart = ({ companyData, isNone }) => {
       <>
         <div style={{ position: 'relative' }}>
           <p>Please Wait We are trying to fetch Data ..</p>
-          <Skeleton width={1000} height={140} animation="wave" variant="text" />
-          <Skeleton width={1000} height={300} animation="wave" variant="text" />
+          <Skeleton width={500} height={400} animation="wave" variant="text" />
         </div>
       </>
     );
