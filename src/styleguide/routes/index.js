@@ -17,12 +17,12 @@ const dashboardRoutes = [
     actionRoutes: [
       {
         path: '/add',
-        name: 'Add/Edit',
+        name: 'Add',
         icon: AddIcon,
       },
       {
-        path: '/all',
-        name: 'View All',
+        path: '/view',
+        name: 'View',
         icon: ListIcon,
       },
     ],

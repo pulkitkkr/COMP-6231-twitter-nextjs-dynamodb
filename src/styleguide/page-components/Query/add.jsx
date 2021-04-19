@@ -213,7 +213,7 @@ const Add = () => {
                   <GridItem md={5} />
                 </Hidden>
                 <GridItem xs={12} sm={12} md={2}>
-                  <Button fullWidth color="rose" onClick={handleSubmit}>
+                  <Button fullWidth color="info" onClick={handleSubmit}>
                     Add Tweet
                   </Button>
                 </GridItem>
