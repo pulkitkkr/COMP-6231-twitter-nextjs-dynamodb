@@ -1,7 +1,7 @@
 import dynamoDb from 'lib/dynamo';
 
 const handlePUT = async (req, res) => {
-  const { item } = req.params;
+  const item = req.body;
 
   if (item.tweet_id) {
     await dynamoDb.put({ Item: item });
