@@ -149,7 +149,21 @@ const View = () => {
                     <CardBody>
                       <GridContainer>
                         <GridItem xs={12} sm={12} md={12}>
+                          <b>Body: </b>
+                          <br />
                           {tweet.body}
+                          <br />
+                        </GridItem>
+                        <GridItem xs={12} sm={12} md={12}>
+                          <b>Likes: </b>
+                          {tweet.like_num}
+                          <br />
+                          <b>Comments: </b>
+                          {tweet.comment_num}
+                          <br />
+                          <b>Retweets: </b>
+                          {tweet.retweet_num}
+                          <br />
                         </GridItem>
                       </GridContainer>
                     </CardBody>

@@ -48,12 +48,14 @@ const Add = () => {
       like_num: 0,
       post_date: '',
       retweet_num: 0,
+      writer: '',
     };
   }, []);
 
   const validationSchema = React.useMemo(() => {
     return yup.object().shape({
       tweet_id: yup.string().required('UUID is Required'),
+      writer: yup.string().required('Writer is Required'),
       body: yup.string().required('Body is Required'),
       comment_num: yup.number().required('Comment Number is Required').min(0, 'It must be greater than 0'),
       like_num: yup.number().required('Like Number is Required').min(0, 'It must be greater than 0'),
@@ -92,7 +94,7 @@ const Add = () => {
   });
 
   const {
-    values: { tweet_id, body, comment_num, like_num, retweet_num, post_date },
+    values: { tweet_id, body, comment_num, like_num, retweet_num, post_date, writer },
     errors,
     handleChange,
     handleSubmit,
@@ -144,50 +146,17 @@ const Add = () => {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="Number of Comments"
-                    id="comment_num"
+                    labelText="Writer"
+                    id="writer"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      error: !!errors.comment_num,
-                      type: 'number',
-                      value: comment_num,
-                      onChange: handleChange('comment_num'),
+                      error: !!errors.writer,
+                      value: writer,
+                      onChange: handleChange('writer'),
                     }}
-                    error={errors.comment_num}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Number of Likes"
-                    id="like_num"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      error: !!errors.like_num,
-                      type: 'number',
-                      value: like_num,
-                      onChange: handleChange('like_num'),
-                    }}
-                    error={errors.like_num}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Number of Retweets"
-                    id="retweet_num"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      error: !!errors.retweet_num,
-                      type: 'number',
-                      value: retweet_num,
-                      onChange: handleChange('retweet_num'),
-                    }}
-                    error={errors.retweet_num}
+                    error={errors.writer}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
@@ -205,6 +174,54 @@ const Add = () => {
                       placeholder: '',
                     }}
                     error={errors.post_date}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Number of Comments"
+                    id="comment_num"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      error: !!errors.comment_num,
+                      type: 'number',
+                      value: comment_num,
+                      onChange: handleChange('comment_num'),
+                    }}
+                    error={errors.comment_num}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Number of Likes"
+                    id="like_num"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      error: !!errors.like_num,
+                      type: 'number',
+                      value: like_num,
+                      onChange: handleChange('like_num'),
+                    }}
+                    error={errors.like_num}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Number of Retweets"
+                    id="retweet_num"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      error: !!errors.retweet_num,
+                      type: 'number',
+                      value: retweet_num,
+                      onChange: handleChange('retweet_num'),
+                    }}
+                    error={errors.retweet_num}
                   />
                 </GridItem>
               </GridContainer>

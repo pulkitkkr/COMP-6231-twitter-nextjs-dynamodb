@@ -1,7 +1,7 @@
 import React from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import GridItem from 'components/Grid/GridItem.js';
-import { buildTimeChart } from 'variables/timechart';
+import { buildTimeChart } from 'variables/timeChart';
 import dynamic from 'next/dynamic';
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 

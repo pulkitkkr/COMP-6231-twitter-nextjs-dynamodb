@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:docker": "docker build -t twitter-amazon-db .",
+    "start:docker": "docker-compose up --build"
   },
   "dependencies": {
     "@material-ui/core": "4.10.0",
