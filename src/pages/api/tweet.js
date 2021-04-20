@@ -47,13 +47,22 @@ const handlePOST = async (req, res) => {
 };
 
 const handleDELETE = async (req, res) => {
-  await dynamoDb.delete({
-    Key: {
-      tweet_id: parseInt(req.query.tweet_id),
-    },
-  });
+  try {
+    const { Attributes } = await dynamoDb.delete({
+      Key: {
+        tweet_id: parseInt(req.body.tweet_id),
+      },
+      ReturnValues: 'ALL_OLD',
+    });
 
-  res.status(204).json({});
+    if (Attributes) {
+      res.status(200).json({ ...Attributes });
+    } else {
+      return res.status(500).json({ message: 'No Tweet found with ID: ' + req.body.tweet_id });
+    }
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 };
 
 export default async (req, res) => {

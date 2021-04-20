@@ -1,5 +1,5 @@
 import Page from 'components/Page/index';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
 import * as yup from 'yup';
