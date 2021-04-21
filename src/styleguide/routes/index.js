@@ -3,6 +3,7 @@ import AddIcon from '@material-ui/icons/Add';
 import ListIcon from '@material-ui/icons/List';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SupervisorIcon from '@material-ui/icons/SupervisorAccount';
+import UpdateIcon from '@material-ui/icons/Update';
 
 const dashboardRoutes = [
   {
@@ -34,7 +35,7 @@ const dashboardRoutes = [
       {
         path: '/update',
         name: 'Update',
-        icon: ListIcon,
+        icon: UpdateIcon,
       },
     ],
   },

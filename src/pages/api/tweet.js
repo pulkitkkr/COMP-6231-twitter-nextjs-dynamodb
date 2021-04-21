@@ -26,24 +26,31 @@ const handleGET = async (req, res) => {
 };
 
 const handlePOST = async (req, res) => {
-  const { Attributes } = await dynamoDb.update({
-    Key: {
-      tweet_id: parseInt(req.body.tweet_id),
-    },
-    UpdateExpression:
-      'SET writer = :writer, post_date = :post_date, body = :body, comment_num = :comment_num, retweet_num = :retweet_num, like_num = :like_num',
-    ExpressionAttributeValues: {
-      ':writer': req.body.writer,
-      ':post_date': req.body.post_date,
-      ':body': req.body.body,
-      ':comment_num': req.body.comment_num,
-      ':retweet_num': req.body.retweet_num,
-      ':like_num': req.body.like_num,
-    },
-    ReturnValues: 'ALL_NEW',
-  });
-
-  return res.status(200).json(Attributes);
+  try {
+    const { Attributes } = await dynamoDb.update({
+      Key: {
+        tweet_id: parseInt(req.body.tweet_id),
+      },
+      UpdateExpression:
+        'SET writer = :writer, post_date = :post_date, body = :body, comment_num = :comment_num, retweet_num = :retweet_num, like_num = :like_num',
+      ExpressionAttributeValues: {
+        ':writer': req.body.writer,
+        ':post_date': req.body.post_date,
+        ':body': req.body.body,
+        ':comment_num': req.body.comment_num,
+        ':retweet_num': req.body.retweet_num,
+        ':like_num': req.body.like_num,
+      },
+      ReturnValues: 'ALL_NEW',
+    });
+    if (Attributes) {
+      return res.status(200).json({ ...Attributes });
+    } else {
+      return res.status(500).json({ message: 'No Tweet found with ID: ' + req.body.tweet_id });
+    }
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 };
 
 const handleDELETE = async (req, res) => {
