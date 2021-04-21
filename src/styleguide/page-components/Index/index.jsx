@@ -115,7 +115,7 @@ const Dashboard = () => {
       );
 
     // ToDo remove this while presenting
-    return new Promise((resolve) => resolve(dummyData));
+    // return new Promise((resolve) => resolve(dummyData));
 
     try {
       const response = await fetch(`/api/tweets?company=${selectedCompany.id}`);
